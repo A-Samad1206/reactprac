@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var obj = {
+      xyz: 5,
+      inner: {
+        wht: 1111,
+        inn: () => console.log('Inner', this),
+        innFun() {
+          console.log('Inner Fun', this);
+        },
+      },
+      // cal= () => console.log('This cal', this),
+      what() {
+        console.log('This calll', this);
+      },
+      third: function () {
+        console.log('Third', this);
+      },
+    };
+    // obj.cal();
+    class User {
+      constructor(name, email) {
+        this.name = name;
+        this.email = email;
+      }
+      login() {
+        console.log(this);
+        console.log('Login ', this.email);
+      }
+      logout = () => {
+        console.log('LogOut ', this.email);
+      };
+    }
+    const u = new User('Abdus', 'Gmail');
+    u.login();
+    u.logout();
+  </script>
+</html>
