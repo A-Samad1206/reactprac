@@ -15,14 +15,11 @@ const AddBook = (props) => {
     genre: '',
     authorId: '',
   });
-  const inputHandle = (e) => {
-    const { name, value } = e.target;
-    setBook((p) => {
-      return {
-        ...p,
-        [name]: value,
-      };
-    });
+  const inputHandle = ({ target: { name, value } }) => {
+    setBook((p) => ({
+      ...p,
+      [name]: value,
+    }));
   };
   const submitHandle = (e) => {
     e.preventDefault();

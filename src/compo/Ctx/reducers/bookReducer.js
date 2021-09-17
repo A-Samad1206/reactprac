@@ -4,20 +4,6 @@ export const bookReducer = (state, action) => {
   console.log('From reducer');
   switch (action.type) {
     case 'ADD_BOOK':
-      // const fet = async () => {
-      //   const data = await fetch(
-      //     'https://jsonplaceholder.typicode.com/comments'
-      //   );
-      //   const data2 = await data.json();
-      //   console.log('Data', data2);
-
-      //   const url = `https://nexombackend.herokuapp.com/products`;
-      //   const data3 = await fetch(url);
-      //   const data23 = await data3.json();
-      //   console.log('Data', data23);
-      //   console.log('state', state);
-      // };
-      // fet();
       return [
         ...state,
         {

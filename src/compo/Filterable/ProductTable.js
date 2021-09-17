@@ -1,14 +1,12 @@
-import React from "react";
-import ProductCategoryRow from "./ProductCategoryRow";
-import ProductRow from "./ProductRow";
+import React from 'react';
 const ProductTable = ({ products }) => {
   const rows = [];
   let lastCategory = null;
 
   products.forEach((product) => {
-    console.log("lastCategory", lastCategory, "lastCategory");
+    console.log('lastCategory', lastCategory, 'lastCategory');
     if (product.category !== lastCategory) {
-      console.log("Executed");
+      console.log('Executed');
       rows.push(
         <ProductCategoryRow
           category={product.category}
@@ -33,3 +31,25 @@ const ProductTable = ({ products }) => {
   );
 };
 export default ProductTable;
+const ProductCategoryRow = ({ category }) => {
+  return (
+    <tr>
+      <th colSpan="2">{category}</th>
+    </tr>
+  );
+};
+
+const ProductRow = ({ product }) => {
+  const name = product.stocked ? (
+    product.name
+  ) : (
+    <span style={{ color: 'red' }}>{product.name}</span>
+  );
+
+  return (
+    <tr>
+      <td>{name}</td>
+      <td>{product.price}</td>
+    </tr>
+  );
+};

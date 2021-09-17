@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation } from 'react-query';
-// import { useQuery, useIsFetching, useMutation } from 'react-query';
+// import {   useIsFetching,   } from 'react-query';
 import Planet from './Planet';
 
 const fetchPlanets = async (q) => {
