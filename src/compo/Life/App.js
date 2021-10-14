@@ -1,28 +1,37 @@
 import React, { Component } from 'react';
 import Counter from './Counter';
 import './index.css';
-export class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { mount: true };
-    this.unmount = () => this.setState({ mount: false });
-    this.mount = () => this.setState({ mount: true });
-    this.ignoreProp = () => this.setState({ ignoreProp: Math.random() });
+    this.state = { mount: true, ignoreProp: 0, seed: 0 };
+    this.toggleMount = () => {
+      this.setState({ mount: !this.state.mount });
+    };
+    this.ignorePropGen = () => this.setState({ ignoreProp: Math.random() });
+    this.seedGen = () =>
+      this.setState({ seed: parseInt(Math.random() * 100, 10) });
   }
-  // console.log("APP outer");
   render() {
-    console.log('App');
-
+    const {
+      toggleMount,
+      ignorePropGen,
+      seedGen,
+      state: { mount, ignoreProp, seed },
+    } = this;
     return (
       <div>
-        <button onClick={this.mount}>Monunt</button>
-        <button onClick={this.unmount}>UnMount</button>
-        <button onClick={this.ignoreProp}>ignoreProp</button>
-        {this.state.mount && <Counter ignoreProp={this.state.ignoreProp} />}
-        {/* <Counter ignoreProp={this.state.ignoreProp} /> */}
+        <button onClick={toggleMount} disabled={mount}>
+          Mount
+        </button>
+        <button onClick={toggleMount} disabled={!mount}>
+          UnMount
+        </button>
+        <button onClick={ignorePropGen}>ignoreProp</button>
+        <button onClick={seedGen}>Seed</button>
+        <hr />
+        {mount && <Counter ignoreProp={ignoreProp} seed={seed} />}
       </div>
     );
   }
 }
-
-export default App;

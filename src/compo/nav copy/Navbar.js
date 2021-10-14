@@ -1,15 +1,5 @@
-import React, { useState, Fragment } from "react";
-// import { FaBars } from "react-icons/fa";
-// import {
-//   Nav,
-//   NavContainer,
-//   NavLogo,
-//   NavItem,
-//   NavLinks,
-//   NavMenu,
-//   MobileIcon,
-// } from "./NavbarStyles";
-import "./App.css";
+import React, { useState, Fragment } from 'react';
+import './App.css';
 const Navbar = () => {
   const [colorChange, setColorchange] = useState(false);
   const changeNavbarColor = () => {
@@ -19,10 +9,10 @@ const Navbar = () => {
       setColorchange(false);
     }
   };
-  window.addEventListener("scroll", changeNavbarColor);
+  window.addEventListener('scroll', changeNavbarColor);
   return (
     <Fragment>
-      <nav className={colorChange ? "navbar colorChange nav" : "navbar nav"}>
+      <nav className={colorChange ? 'navbar colorChange nav' : 'navbar nav'}>
         <div className="NavContainer">
           <a className="NavLogo" href="#">
             GeeksForGeeks

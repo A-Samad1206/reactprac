@@ -25,7 +25,8 @@ import './index.css';
 // import App from './compo/Saga/App.js';
 // import App from './compo/Life/App';
 // import App from './compo/Ripple/App';
-import App from './compo/material';
+// import App from './compo/material';
 // import App from './compo/skeleton';
+import App from './compo/fetch';
 
 ReactDOM.render(<App />, document.getElementById('root'));

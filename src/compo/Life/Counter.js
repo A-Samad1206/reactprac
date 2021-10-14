@@ -1,82 +1,85 @@
 import React, { Component } from 'react';
-const ErrorComponent = () => <h2>{props.errors}</h2>;
 
-class Counter extends Component {
+export default class Counter extends Component {
   constructor(props) {
-    console.log('constructor');
     super(props);
-    this.state = { count: 0 };
-    this.set = (xyz) => this.setState({ xyz });
+    this.state = { counter: 0, temp: 'chk', seed: 0 };
+    this.inc = () =>
+      this.setState((prev) => {
+        return { counter: prev.counter + 1 };
+      });
+    console.log('#######');
+    console.log('Constructor');
+    console.log('-------');
   }
-  static getDerivedStateFromProps(nextProps, nextState) {
+  static getDerivedStateFromProps(props, state) {
+    console.log('#######');
     console.log('getDerivedStateFromProps');
-    console.log('nextProps', nextProps);
-    console.log('prevState', nextState);
-    // console.log('this.state.count', this.state.count);
+    console.log('props', props);
+    console.log('state', state);
+    console.log('this', this && this);
     // console.log('this.props', this.props);
-    // set(nextProps.ignoreProp);
-    console.log('---------------------');
+    // console.log('this.state', this.state);
+    console.log('-------');
+    if (props.seed !== 0) {
+      return {
+        seed: props.seed,
+      };
+    }
     return null;
   }
   shouldComponentUpdate(nextProps, nextState) {
+    console.log('#######');
     console.log('shouldComponentUpdate');
     console.log('nextProps', nextProps);
     console.log('nextState', nextState);
-    console.log('this.state.count', this.state.count);
     console.log('this.props', this.props);
-    console.log('-------------------');
-    if (
-      this.props.ignoreProp &&
-      nextProps.ignoreProp &&
-      this.props.ignoreProp === nextProps.ignoreProp
-    )
-      return false;
-    return nextState.count <= 5 ? true : false;
+    console.log('this.state', this.state);
+    console.log('-------');
+    return this.state.counter !== nextState.counter ? true : false;
+  }
+  getSnapshotBeforeUpdate(prevProps, prevStates) {
+    console.log('#######');
+    console.log('getSnapshotBeforeUpdate');
+    console.log('prevProps', prevProps);
+    console.log('prevStates', prevStates);
+    console.log('this.props', this.props);
+    console.log('this.state', this.state);
+    console.log('-------');
+    return null;
   }
   render() {
-    console.log('render');
-    if (this.state.error || this.state.info) {
-      return <div>Helooooooooooooooooooo</div>;
-    }
-
+    console.log('#######');
+    console.log('Render');
+    console.log('-------');
     return (
       <div>
-        <button
-          onClick={() => this.setState((prev) => ({ count: prev.count + 1 }))}
-        >
-          Inc
-        </button>
-        Counter:-{this.state.count}
-        <br />
-        Ignore Props:-{this.state.xyz}
-        <hr />
-        <ErrorComponent />
+        <h5>Counter :- {this.state.counter}</h5>{' '}
+        <h5>Seed :- {this.state.seed}</h5>
+        <button onClick={this.inc}>Inc</button>
       </div>
     );
   }
   componentDidMount() {
+    console.log('#######');
     console.log('componentDidMount');
+    console.log('-------');
   }
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log('getSnapshotBeforeUpdate');
-    console.log('prevProps', prevProps);
-    console.log('prevState', prevState);
-    console.log('-----------------');
-    return true;
-  }
-  //WARNING! To be deprecated in React v17. Use componentDidUpdate instead.
   componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('#######');
     console.log('componentDidUpdate');
     console.log('prevProps', prevProps);
     console.log('prevState', prevState);
-    console.log('this.state.count', this.state.count);
     console.log('this.props', this.props);
-
+    console.log('this.state', this.state);
     console.log('snapshot', snapshot);
-    console.log('------------------');
+    console.log('-------');
   }
-  componentWillUnmount() {
+  componentWillUnmount(prop) {
+    console.log('#######');
     console.log('componentWillUnmount');
+    console.log('prop', prop);
+    console.log('-------');
   }
   componentDidCatch(error, info) {
     console.log('componentDidCatch');
@@ -86,5 +89,3 @@ class Counter extends Component {
     this.setState({ error, info });
   }
 }
-
-export default Counter;
