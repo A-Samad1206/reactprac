@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 function App() {
   // const [string, setString] = useState();
@@ -7,11 +7,11 @@ function App() {
   //   name: "Abdus Samad",
   //   count:0
   // });
-  console.log("Render");
   const inc = () => {
     for (let i = 0; i <= 100; i++) {
       if (i % 2 === 0) {
-        setNum(num + 1); //Except this all three below work same and right.
+        console.log('App');
+        setNum((num += 50)); //Except this all three below work same and right.
         // setNum(num++);
         // setNum(++num);
         // setNum((prev) => prev + 1);
@@ -19,12 +19,13 @@ function App() {
       // num % 2 !== 0 && setNum(num++);
     } // setNum()
   };
+  console.log('app render');
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
     >
       <h2>State:-</h2>

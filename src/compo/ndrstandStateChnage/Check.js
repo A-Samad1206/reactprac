@@ -9,19 +9,26 @@ class Check extends React.Component {
   }
 
   increment = () => {
+    let count = this.state.count;
     for (let i = 0; i <= 100; i++) {
+      count++;
       // this.setState({ count: this.state.count });
-      if (i % 2 === 0) {
+      // console.log('Run', this.state.count);
+      // this.setState((prev) => ({ count: prev.count + 1 })); //This does not work quite right.
+      if (i % 2 === 0 && false) {
         console.log('Before', this.state.count);
-        // this.setState((prev) => ({ count: prev.count + 1 })); //All three below work same and right
+        // this.setState((prev) => ({ count: prev.count + 1 }))
         // this.setState({ count: ++this.state.count });
         // this.setState({ count: this.state.count++ });
+        //All above three work same and perfect.
         this.setState({ count: this.state.count + 1 }); //This does not work quite right.
         console.log('After', this.state.count);
       }
     }
+    this.setState({ count: count }); //This
   };
   render() {
+    console.log('Render');
     return (
       <div>
         <h2>Check Class:-{this.state.name}</h2>

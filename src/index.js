@@ -27,6 +27,7 @@ import './index.css';
 // import App from './compo/Ripple/App';
 // import App from './compo/material';
 // import App from './compo/skeleton';
-import App from './compo/fetch';
-
+// import App from './compo/fetch';
+// import App from './compo/This/App';
+import App from "./compo/notistack"
 ReactDOM.render(<App />, document.getElementById('root'));
